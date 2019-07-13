@@ -1,17 +1,8 @@
 <template>
-<div id="index">
-    <v-app id="index.inspire" dark>
-    <v-container id=image>
-               <v-img id=img
-              :src="require('@/assets/logo.png')"
-              aspect-ratio="1"
-              class="grey lighten-2"
-              max-height="100%"
-              max-width="200"
-              ></v-img>
-              <h1 class="display-2 font-weight-light" style="padding: .4em"> Spazzy757 </h1>
-  </v-container>
-  <v-layout justify-center>
+   <div id="blog">
+    <v-app id="blog.inspire" dark>
+
+  <v-layout justify-center align-center>
     <v-flex xs12 sm10>
       <v-card>
         <v-container
@@ -19,12 +10,8 @@
           grid-list-lg
         >
           <v-layout row wrap>
-            <v-flex
-              v-for="blog in blogList"
-              :key="blog._id"
-              xs12 sm6
-            >
-              <v-card @click="changeComponent('/blog/'.concat(blog._id))">
+            <v-flex>
+              <v-card>
                 <v-img
                   :src="blog.image"
                   height="25em"
@@ -46,13 +33,9 @@
           <div>
             <span class="grey--text">{{blog.author}}</span><br>
             <span>{{blog.created}}</span><br>
-            <span>{{blog.content|truncate}}</span>
+            <span>{{blog.content}}</span>
           </div>
         </v-card-title>
-        <v-card-actions>
-          <v-btn color="dark">Share</v-btn>
-          <v-btn color="dark">Explore</v-btn>
-        </v-card-actions>
 
               </v-card>
             </v-flex>
@@ -61,41 +44,32 @@
       </v-card>
     </v-flex>
   </v-layout>
-   </v-app>
+    </v-app>
   </div>
 </template>
 
 <script>
 export default {
   mounted: function () {
-    this.getBlogList()
+    this.getBlog()
   },
   data: () => ({
     drawer: null,
-    blogList: []
+    blog: []
   }),
   props: {
     source: String
   },
   methods: {
-    getBlogList: function () {
-      this.$http.get('http://localhost:3000/blog/').then((res) => {
+    getBlog: function () {
+      this.$http.get('http://localhost:3000/blog/'.concat(this.$route.params.id)).then((res) => {
         console.log(res.data.data)
-        this.blogList = res.data.data
+        this.blog = res.data.data
       })
-    },
-    changeComponent: function (page) {
-      this.$router.push(page)
     }
-  },
-  filters: {
-    truncate: function (value) {
-      if (value.length > 100) {
-        value = value.substring(0, 100) + '...'
-      }
-      return value
-    }
+
   }
+
 }
 </script>
 <style>
