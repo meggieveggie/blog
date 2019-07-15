@@ -2,6 +2,7 @@
   <div id="app">
     <v-app id="inspire" dark>
     <v-toolbar app fixed clipped-left>
+      <v-toolbar-title class="font-weight-light display-1">Spazzy757</v-toolbar-title>
       <v-toolbar-title class="font-weight-light" @click="changeComponent('/')" ><v-icon >home</v-icon>Home</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-title class="font-weight-light" ><v-icon>far fa-keyboard</v-icon>Login</v-toolbar-title>

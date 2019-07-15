@@ -3,13 +3,10 @@
     <v-app id="index.inspire" dark>
     <v-container id=image>
                <v-img id=img
-              :src="require('@/assets/logo.png')"
-              aspect-ratio="1"
-              class="grey lighten-2"
+              :src="require('@/assets/spazzy2.jpeg')"
               max-height="100%"
-              max-width="200"
+              max-width="300"
               ></v-img>
-              <h1 class="display-2 font-weight-light" style="padding: .4em"> Spazzy757 </h1>
   </v-container>
   <v-layout justify-center>
     <v-flex xs12 sm10>
