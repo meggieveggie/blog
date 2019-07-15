@@ -22,6 +22,12 @@ export default new Router({
       path: '/blogform',
       name: 'blogform',
       component: blogform
+    },
+    {
+      path: '/blogform/:id',
+      name: 'blogform-update',
+      component: blogform
     }
+
   ]
 })

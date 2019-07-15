@@ -32,9 +32,16 @@
                 <v-card-title>
           <div>
                <v-card-actions>
-          <v-btn color="dark" @click='crPost()'>Edit</v-btn>
+          <v-btn color="dark" @click="changeComponent('/blogform/'.concat(blog._id))">Edit</v-btn>
           <v-btn color="dark" @click='destroyPost()'>Delete</v-btn>
         </v-card-actions>
+        <v-avatar
+          :tile="tile"
+          :size="avatarSize"
+          color="grey lighten-4"
+        >
+          <img :src="require('@/assets/logo.png')" alt="avatar">
+        </v-avatar>
             <span class="grey--text">{{blog.author}}</span><br>
             <span>{{blog.created}}</span><br>
             <span>{{blog.content}}</span>
@@ -86,6 +93,9 @@ export default {
         .catch((e) => {
           console.error(e)
         })
+    },
+    changeComponent: function (page) {
+      this.$router.push({ path: page })
     }
   }
 }

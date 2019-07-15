@@ -1,13 +1,18 @@
 <template>
 <div id="index">
     <v-app id="index.inspire" dark>
-    <v-container id=image>
+      <div>
+      <v-layout>
+    <v-flex xs12 sm12>
                <v-img id=img
               :src="require('@/assets/spazzy2.jpeg')"
               max-height="100%"
-              max-width="300"
+              max-width="100%"
               ></v-img>
-  </v-container>
+    </v-flex>
+  </v-layout>
+  </div>
+
   <v-layout justify-center>
     <v-flex xs12 sm10>
       <v-card>
@@ -41,6 +46,13 @@
 
                 <v-card-title>
           <div>
+            <v-avatar
+          :tile="tile"
+          :size="avatarSize"
+          color="grey lighten-4"
+        >
+          <img :src="require('@/assets/logo.png')" alt="avatar">
+        </v-avatar>
             <span class="grey--text">{{blog.author}}</span><br>
             <span>{{blog.created}}</span><br>
             <span>{{blog.content|truncate}}</span>
@@ -97,10 +109,7 @@ export default {
 </script>
 <style>
 #img{
-    top: 8rem;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+  padding: 0%;
 }
 
 </style>
