@@ -1,69 +1,64 @@
 <template>
 <div id="index">
-    <v-app id="index.inspire" dark>
-      <div>
+    <v-app id="index.inspire">
       <v-layout>
     <v-flex xs12 sm12>
+      <v-card
+      height="600px"
+      flat
+      >
                <v-img id=img
               :src="require('@/assets/spazzy2.jpeg')"
-              max-height="100%"
-              max-width="100%"
+              position="90% 10%"
+              height="100%"
               ></v-img>
+        </v-card>
     </v-flex>
   </v-layout>
-  </div>
-
   <v-layout justify-center>
     <v-flex xs12 sm10>
-      <v-card>
+      <v-card 
+      hover>
         <v-container
           fluid
-          grid-list-lg
-        >
-          <v-layout row wrap>
+          grid-list-xl >
+          <v-layout column>
             <v-flex
               v-for="blog in blogList"
               :key="blog._id"
               xs12 sm6
-            >
-              <v-card @click="changeComponent('/blog/'.concat(blog._id))">
+              justify-center @click="changeComponent('/blog/'.concat(blog._id))">
+               <v-hover>
+                 <v-card 
+                 slot-scope="{ hover }"
+                 :class="`elevation-${hover ? 12 : 2}`">
+            <v-layout row id="blog">
+            <v-flex xs12 md4 >
+             <v-container id="img">
                 <v-img
-                  :src="blog.image"
-                  height="25em"
-                >
-                  <v-container
-                    fill-height
-                    fluid
-                    pa-2
-                  >
-                    <v-layout fill-height>
-                      <v-flex xs12 align-end flexbox>
-                        <span class="headline white--text" v-text="blog.title"></span>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
+                  :src="blog.image">
                 </v-img>
-
-                <v-card-title>
-          <div>
-            <v-avatar
-          :tile="tile"
-          :size="avatarSize"
-          color="grey lighten-4"
-        >
+             </v-container>
+             </v-flex>
+                  <v-container id="text">
+                  <div>
+                        <span class="headline white--text" v-text="blog.title"></span>
+                  </div>
+            <v-avatar>
           <img :src="require('@/assets/logo.png')" alt="avatar">
         </v-avatar>
             <span class="grey--text">{{blog.author}}</span><br>
             <span>{{blog.created}}</span><br>
             <span>{{blog.content|truncate}}</span>
-          </div>
-        </v-card-title>
+        <v-layout justify-end>
         <v-card-actions>
-          <v-btn color="dark">Share</v-btn>
-          <v-btn color="dark">Explore</v-btn>
+          <v-btn color="dark">Continue Reading</v-btn>
         </v-card-actions>
-
-              </v-card>
+        </v-layout>
+                  </v-container>
+            </v-layout>
+            </v-card>
+            </v-hover>
             </v-flex>
           </v-layout>
         </v-container>
@@ -99,8 +94,8 @@ export default {
   },
   filters: {
     truncate: function (value) {
-      if (value.length > 100) {
-        value = value.substring(0, 100) + '...'
+      if (value.length > 700) {
+        value = value.substring(0, 700) + '...'
       }
       return value
     }
@@ -108,8 +103,19 @@ export default {
 }
 </script>
 <style>
-#img{
-  padding: 0%;
+
+#text {
+  text-align: start;
+  padding: 0px 15px;
+}
+
+#img {
+  padding: 0px 15px;
+}
+
+#blog {
+  padding: 15px 0px;
+  margin: 15px 0px;
 }
 
 </style>

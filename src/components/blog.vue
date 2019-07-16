@@ -1,7 +1,6 @@
 <template>
    <div id="blog">
     <v-app id="blog.inspire" dark>
-
   <v-layout justify-center align-center>
     <v-flex xs12 sm10>
       <v-card>
@@ -9,41 +8,41 @@
           fluid
           grid-list-lg
         >
-          <v-layout row wrap>
+          <v-layout>
             <v-flex>
               <v-card>
-                <v-img
-                  :src="blog.image"
-                  height="25em"
-                >
-                  <v-container
+                <v-container
                     fill-height
                     fluid
                     pa-2
                   >
                     <v-layout fill-height>
                       <v-flex xs12 align-end flexbox>
-                        <span class="headline white--text" v-text="blog.title"></span>
+                        <span class="display-2" v-text="blog.title"></span>
                       </v-flex>
                     </v-layout>
                   </v-container>
-                </v-img>
 
-                <v-card-title>
-          <div>
-               <v-card-actions>
-          <v-btn color="dark" @click="changeComponent('/blogform/'.concat(blog._id))">Edit</v-btn>
-          <v-btn color="dark" @click='destroyPost()'>Delete</v-btn>
-        </v-card-actions>
-        <v-avatar
-          :tile="tile"
-          :size="avatarSize"
-          color="grey lighten-4"
-        >
+              <v-layout row wrap justify-center align-center>
+                 <v-avatar>
           <img :src="require('@/assets/logo.png')" alt="avatar">
         </v-avatar>
             <span class="grey--text">{{blog.author}}</span><br>
+          </v-layout>
+
             <span>{{blog.created}}</span><br>
+             
+                <v-img
+                  :src="blog.image"
+                  height="25em"
+                >
+                </v-img>
+               <v-card-actions>
+          <v-btn color="dark">Share</v-btn>
+          <v-btn color="dark" @click="changeComponent('/blogform/'.concat(blog._id))">Edit</v-btn>
+          <v-btn color="dark" @click='destroyPost()'>Delete</v-btn>
+        </v-card-actions>
+        <div>
             <span>{{blog.content}}</span>
           </div>
           <span v-if="error">{{error}}</span>
