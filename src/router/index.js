@@ -5,6 +5,7 @@ import blogform from '@/components/blogform'
 import Blog from '@/components/blog'
 
 Vue.use(Router)
+Vue.use(require('vue-moment'))
 
 export default new Router({
   routes: [

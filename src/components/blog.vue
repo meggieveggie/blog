@@ -30,23 +30,20 @@
             <span class="grey--text">{{blog.author}}</span><br>
           </v-layout>
 
-            <span>{{blog.created}}</span><br>
-             
+            <span>{{blog.created | moment("dddd, MMMM Do YYYY")}}</span><br>
                 <v-img
                   :src="blog.image"
                   height="25em"
                 >
                 </v-img>
                <v-card-actions>
-          <v-btn color="dark">Share</v-btn>
-          <v-btn color="dark" @click="changeComponent('/blogform/'.concat(blog._id))">Edit</v-btn>
-          <v-btn color="dark" @click='destroyPost()'>Delete</v-btn>
+          <v-btn color="success" @click="changeComponent('/blogform/'.concat(blog._id))">Edit</v-btn>
+          <v-btn color="error" @click='destroyPost()'>Delete</v-btn>
         </v-card-actions>
         <div>
-            <span>{{blog.content}}</span>
+            <vue-markdown :source="blog.content"></vue-markdown>
           </div>
           <span v-if="error">{{error}}</span>
-        </v-card-title>
               </v-card>
             </v-flex>
           </v-layout>
@@ -59,6 +56,9 @@
 </template>
 
 <script>
+
+import VueMarkdown from 'vue-markdown'
+
 export default {
   mounted: function () {
     this.getBlog()
@@ -68,6 +68,11 @@ export default {
     blog: [],
     error: null
   }),
+
+  components: {
+    VueMarkdown
+  },
+
   props: {
     source: String
   },

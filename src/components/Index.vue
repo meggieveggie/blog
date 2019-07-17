@@ -17,7 +17,7 @@
   </v-layout>
   <v-layout justify-center>
     <v-flex xs12 sm10>
-      <v-card 
+      <v-card
       hover>
         <v-container
           fluid
@@ -29,7 +29,7 @@
               xs12 sm6
               justify-center @click="changeComponent('/blog/'.concat(blog._id))">
                <v-hover>
-                 <v-card 
+                 <v-card
                  slot-scope="{ hover }"
                  :class="`elevation-${hover ? 12 : 2}`">
             <v-layout row id="blog">
@@ -48,7 +48,7 @@
           <img :src="require('@/assets/logo.png')" alt="avatar">
         </v-avatar>
             <span class="grey--text">{{blog.author}}</span><br>
-            <span>{{blog.created}}</span><br>
+            <span>{{blog.created | moment("dddd, MMMM Do YYYY")}}</span><br>
             <span>{{blog.content|truncate}}</span>
         <v-layout justify-end>
         <v-card-actions>
