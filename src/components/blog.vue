@@ -29,7 +29,6 @@
         </v-avatar>
             <span class="grey--text">{{blog.author}}</span><br>
           </v-layout>
-
             <span>{{blog.created | moment("dddd, MMMM Do YYYY")}}</span><br>
                 <v-img
                   :src="blog.image"
