@@ -42,6 +42,7 @@
       v-model="blog.content"
       outline
       color="white"
+      auto-grow
     ></v-textarea>
 
     <span v-if="error">{{error}}</span>
