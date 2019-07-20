@@ -5,10 +5,9 @@
       <v-toolbar-title class="font-weight-light display-1">Spazzy757</v-toolbar-title>
       <v-toolbar-title class="font-weight-light" @click="changeComponent('/')" ><v-icon >home</v-icon>Home</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-title class="font-weight-light" @click="changeComponent('/posts-manager')">Posts Manager</v-toolbar-title>
       <v-toolbar-title href="#" @click.prevent="login" v-if="!activeUser"><v-icon>far fa-keyboard</v-icon>Login</v-toolbar-title>
-      <v-toolbar-title href="#" @click.prevent="logout" v-else>Logout</v-toolbar-title>
-      <v-toolbar-title class="font-weight-light" @click="changeComponent('/blogform')"><v-icon >fas fa-plus</v-icon>New</v-toolbar-title>
+      <v-toolbar-title href="#" @click.prevent="logout" v-else><v-icon>far fa-keyboard</v-icon>Logout</v-toolbar-title>
+      <v-toolbar-title class="font-weight-light" @click="changeComponent('/blogform')" v-if="activeUser"><v-icon >fas fa-plus</v-icon>New</v-toolbar-title>
       <v-text-field
           style="max-width: 300px; margin: 50px; padding-top:5px"
           append-icon="fas fa-search"
