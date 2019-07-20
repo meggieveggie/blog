@@ -9,6 +9,7 @@ import axios from 'axios'
 
 Vue.prototype.$http = axios
 Vue.use(Vuetify)
+Vue.use(require('vue-moment'))
 Vue.config.productionTip = false
 Vue.use(require('vue-moment'))
 

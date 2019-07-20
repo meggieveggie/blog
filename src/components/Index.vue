@@ -3,6 +3,7 @@
     <v-app id="index.inspire">
       <v-layout>
     <v-flex xs12 sm12>
+       <v-hover>
       <v-card
       height="600px"
       flat
@@ -13,6 +14,7 @@
               height="100%"
               ></v-img>
         </v-card>
+        </v-hover>
     </v-flex>
   </v-layout>
   <v-layout justify-center>
