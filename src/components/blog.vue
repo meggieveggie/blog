@@ -29,7 +29,6 @@
         </v-avatar>
             <span class="grey--text">{{blog.author}}</span><br>
           </v-layout>
-
             <span>{{blog.created | moment("dddd, MMMM Do YYYY")}}</span><br>
                 <v-img
                   :src="blog.image"
@@ -37,8 +36,10 @@
                 >
                 </v-img>
                <v-card-actions>
+                 <div v-if="activeUser">
           <v-btn color="success" @click="changeComponent('/blogform/'.concat(blog._id))">Edit</v-btn>
           <v-btn color="error" @click='destroyPost()'>Delete</v-btn>
+                 </div>
         </v-card-actions>
         <div>
             <vue-markdown :source="blog.content"></vue-markdown>
@@ -64,6 +65,7 @@ export default {
     this.getBlog()
   },
   data: () => ({
+    activeUser: null,
     drawer: null,
     blog: [],
     error: null
@@ -76,6 +78,13 @@ export default {
   props: {
     source: String
   },
+  async created () {
+    await this.refreshActiveUser()
+  },
+  watch: {
+    // everytime a route is changed refresh the activeUser
+    '$route': 'refreshActiveUser'
+  },
   methods: {
     getBlog: function () {
       this.$http.get('http://localhost:3000/blog/'.concat(this.$route.params.id)).then((res) => {
@@ -83,7 +92,9 @@ export default {
         this.blog = res.data.data
       })
     },
-
+    async refreshActiveUser () {
+      this.activeUser = await this.$auth.getUser()
+    },
     destroyPost: function () {
       this.$http.delete('http://localhost:3000/blog/'.concat(this.$route.params.id))
         .then((response) => {
